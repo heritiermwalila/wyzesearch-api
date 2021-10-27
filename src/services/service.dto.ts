@@ -28,13 +28,13 @@ export interface IArticle {
   source: string;
   multimedia: IArticleMultimedia[];
   headline: IArticleHeadline;
-  keywords: IArticleKeyWords[]
+  keywords: IArticleKeyWords[];
   pub_date: string;
   document_type: string;
   news_desk: string;
   _id: string;
   score: number;
-  uri: string
+  uri: string;
 }
 
 export interface IBookReview {
@@ -43,7 +43,7 @@ export interface IBookReview {
   book_title: string;
   book_author: string;
   summary: string;
-  isbtn13: string[]
+  isbtn13: string[];
 }
 
 export interface IBook {
@@ -56,13 +56,12 @@ export interface IBook {
   price: string;
   title: string;
   author: string;
-  contributor: string
+  contributor: string;
   contributor_note: string;
   book_image: string;
   book_image_width: number;
   book_image_height: number;
-  [key: string]: any
-
+  [key: string]: any;
 }
 
 export interface IMovie {
@@ -78,14 +77,14 @@ export interface IMovie {
     type: string;
     url: string;
     suggested_link_text?: string;
-  }
+  };
   multimedia: {
     type: string;
     src: {
-      height: number
-      width: number
-    }
-  }
+      height: number;
+      width: number;
+    };
+  };
 }
 
 interface IStorieMultimedia {
@@ -100,7 +99,7 @@ interface IStorieMultimedia {
 }
 export interface IStorie {
   section: string;
-  subsection?: string
+  subsection?: string;
   title: string;
   abstract: string;
   url: string;
@@ -111,9 +110,9 @@ export interface IStorie {
   publish_date: string;
   des_facet: string[];
   org_facet?: string[];
-  per_facet: string[]
-  geo_facet?: string[]
-  multimedia: IStorieMultimedia[]
+  per_facet: string[];
+  geo_facet?: string[];
+  multimedia: IStorieMultimedia[];
 }
 
 export interface ISearchResponse {
@@ -125,5 +124,5 @@ export interface ISearchResponse {
 
 export interface ISearchQuery {
   key: string;
-  value: string
+  value: string;
 }

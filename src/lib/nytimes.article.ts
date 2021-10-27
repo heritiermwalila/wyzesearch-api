@@ -9,15 +9,11 @@ export class NyTimesArticleProvider {
 
   /**
    * Search articles
-   * @param q 
+   * @param q
    */
-  async search(q: {key: string; value: string}): Promise<IArticle[]> {
+  async search(q: { key: string; value: string }): Promise<IArticle[]> {
     try {
-     
-      return  await this.nytime.request(
-        `${this.endpoint}/articlesearch`,
-        q,
-      )
+      return await this.nytime.request(`${this.endpoint}/articlesearch`, q);
     } catch (error) {
       console.log(error);
     }
@@ -25,16 +21,11 @@ export class NyTimesArticleProvider {
 
   /**
    * Get top latest articles
-   * @returns 
+   * @returns
    */
   async getLatest(): Promise<IArticle[]> {
     try {
-      return await this.nytime.request(
-        `${this.endpoint}/articlesearch`
-      );
-      
-    } catch (error) {
-      
-    }
+      return await this.nytime.request(`${this.endpoint}/articlesearch`);
+    } catch (error) {}
   }
 }

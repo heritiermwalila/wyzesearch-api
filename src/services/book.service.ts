@@ -4,18 +4,17 @@ import { IBook, ISearchQuery } from './service.dto';
 
 @Injectable()
 export class BookService {
-
-  constructor(private bookProvider: NyTimesBookProvider){}
+  constructor(private bookProvider: NyTimesBookProvider) {}
   /**
    * https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=
    * Search book
-   * @param query 
-   * @returns 
+   * @param query
+   * @returns
    */
-  async search(query: ISearchQuery): Promise<{books: IBook[]}> {
+  async search(query: ISearchQuery): Promise<{ books: IBook[] }> {
     try {
       return {
-        books: await this.bookProvider.search(query)
+        books: await this.bookProvider.search(query),
       };
     } catch (error) {}
   }
@@ -24,39 +23,32 @@ export class BookService {
    * https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=
    * Get latest books
    */
-  async getLatest(){
+  async getLatest() {
     try {
-      return await this.bookProvider.getLatest()
-    } catch (error) {
-      
-    }
+      return await this.bookProvider.getLatest();
+    } catch (error) {}
   }
 
-  async searchByAuthorname(name: string){
+  async searchByAuthorname(name: string) {
     try {
-      
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
 
   /**
-   * 
-   * @param date 
+   *
+   * @param date
    */
-  async searchByDate(date: string){
+  async searchByDate(date: string) {
     try {
-      
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
 
-  async getReviewsBy(payload: {author?: string; isbn: string; title?: string}){
+  async getReviewsBy(payload: {
+    author?: string;
+    isbn: string;
+    title?: string;
+  }) {
     try {
-      
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
 }

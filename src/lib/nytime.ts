@@ -22,7 +22,7 @@ export class NyTime {
     try {
       /**
        * can be done in a very simple and clean way. just don't have time
-       * [endpoint, query, filter, api_key].join('&) or use encodeURI() or encodeURIComponent API
+       * [endpoint, query, filter, api_key].join('&') or use encodeURI() or encodeURIComponent API
        * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
        */
       let endpoint = `${this.API_HOST}${path}.json`;
@@ -37,6 +37,7 @@ export class NyTime {
         this.http.get(endpoint).subscribe({
           next: (response) => resolve(response),
           error: (error) => reject(error),
+          complete: () => console.log('Request completed'),
         });
       });
     } catch (error) {}

@@ -1,4 +1,11 @@
-import { Controller, Get, HttpException, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  Post,
+  Res,
+} from '@nestjs/common';
 import { Response } from 'express';
 import { searchCategories } from './app/utils';
 import { AppService } from './services/app.service';
@@ -18,8 +25,17 @@ export class AppController {
   ) {}
 
   @Post('/search')
-  async search() {
+  async search(@Body() payload: any, @Res() res: Response) {
     try {
+      /** We can do promise.all if we want to request all entities */
+      const data = await Promise.race([
+        this.articleService.search(payload?.query),
+        this.bookService.search(payload?.query),
+        this.movieService.search(payload?.query),
+        this.storyService.search(payload?.query),
+      ]);
+
+      return res.status(200).json({ status: 200, data });
     } catch (error) {
       throw new HttpException(
         {

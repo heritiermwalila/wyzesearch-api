@@ -9,14 +9,14 @@ export const searchCategories: ISearchCategory[] = [
   },
   {
     name: 'Books',
-    key: 'book',
+    key: 'books',
   },
   {
     name: 'Movie reviews',
-    key: 'movie reviews',
+    key: 'movies',
   },
   {
     name: 'Top stories',
-    key: 'top stories',
+    key: 'stories',
   },
 ];

@@ -14,11 +14,24 @@ export class NyTime {
    * @param filter
    * @returns
    */
-  request(path: string, q: string, filter?: string): Promise<any> {
+  request(
+    path: string,
+    q?: { key: string; value: string },
+    filter?: string,
+  ): Promise<any> {
     try {
-      let endpoint = `${this.API_HOST}${path}.json?q=${q}&api_key=${this.API_KEY}`;
-      if (filter && Object.values(filter).length > 0) {
+      /**
+       * can be done in a very simple and clean way. just don't have time
+       * [endpoint, query, filter, api_key].join('&) or use encodeURI() or encodeURIComponent API
+       * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
+       */
+      let endpoint = `${this.API_HOST}${path}.json`;
+      if (q) {
+        endpoint += `?${q?.key}=${q?.value}&api_key=${this.API_KEY}`;
+      } else if (filter && Object.values(filter).length > 0) {
         endpoint += `&filter=${filter}`;
+      } else {
+        endpoint += `?api_key=${this.API_KEY}`;
       }
       return new Promise((resolve, reject) => {
         this.http.get(endpoint).subscribe({

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { NyTimesBookProvider } from 'src/lib/nytimes.book';
-import { IBook } from './service.dto';
+import { IBook, ISearchQuery } from './service.dto';
 
 @Injectable()
 export class BookService {
@@ -12,7 +12,7 @@ export class BookService {
    * @param query 
    * @returns 
    */
-  async search(query: string): Promise<{books: IBook[]}> {
+  async search(query: ISearchQuery): Promise<{books: IBook[]}> {
     try {
       return {
         books: await this.bookProvider.search(query)

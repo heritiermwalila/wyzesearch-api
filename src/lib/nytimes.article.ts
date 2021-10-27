@@ -11,7 +11,7 @@ export class NyTimesArticleProvider {
    * Search articles
    * @param q 
    */
-  async search(q: string): Promise<IArticle[]> {
+  async search(q: {key: string; value: string}): Promise<IArticle[]> {
     try {
      
       return  await this.nytime.request(
@@ -30,7 +30,7 @@ export class NyTimesArticleProvider {
   async getLatest(): Promise<IArticle[]> {
     try {
       return await this.nytime.request(
-        `${this.endpoint}/articlesearch`, ''
+        `${this.endpoint}/articlesearch`
       );
       
     } catch (error) {

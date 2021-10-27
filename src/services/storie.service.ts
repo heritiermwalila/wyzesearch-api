@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IStorie } from './service.dto';
+import { ISearchQuery, IStorie } from './service.dto';
 
 
 export type StoryType = 'arts' | 'home' | 'science' | 'us' | 'world'
@@ -12,7 +12,7 @@ export class StoryService {
    * @param query 
    * @returns 
    */
-  async search(query: string, filter?: Record<string, any>): Promise<{stories: IStorie[]}> {
+  async search(query: ISearchQuery, filter?: Record<string, any>): Promise<{stories: IStorie[]}> {
     try {
       return {
         stories: [],

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IMovie } from './service.dto';
+import { IMovie, ISearchQuery } from './service.dto';
 
 @Injectable()
 export class MovieService {
@@ -8,7 +8,7 @@ export class MovieService {
    * @param query 
    * @returns 
    */
-  async search(query: string): Promise<{movies: IMovie[]}> {
+  async search(query: ISearchQuery): Promise<{movies: IMovie[]}> {
     try {
       return {
         movies: [],

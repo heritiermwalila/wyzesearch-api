@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IBook } from 'src/services/service.dto';
+import { IBook, ISearchQuery } from 'src/services/service.dto';
 import { NyTime } from './nytime';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class NyTimesBookProvider {
    * Will require more work, comeback later
    * @param query 
    */
-  async search(query: string){ 
+  async search(query: ISearchQuery){ 
     /** arg query can be {key: string; value: string} 
      * so we can search by keys and value 
      * books?.filter(book => book?.[query?.key] === query?.value)
@@ -22,7 +22,7 @@ export class NyTimesBookProvider {
     try {
       const books = await this.nytime.request(this.endpoint) as IBook[] //will return all latest books
 
-      return  books?.filter(book => book.title === query)
+      return  books?.filter(book => book?.[query?.key] === query?.value)
     } catch (error) {
       
     }

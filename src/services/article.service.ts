@@ -12,7 +12,7 @@ export class ArticleService {
    * @param {string} query 
    * @returns 
    */
-  async search(query: string): Promise<{articles: IArticle[]}> {
+  async search(query: {key: string; value: string}): Promise<{articles: IArticle[]}> {
     try {
       return {
         articles: await this.articleProvider.search(query)

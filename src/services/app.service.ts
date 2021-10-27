@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ArticleService } from './article.service';
 import { BookService } from './book.service';
 import { MovieService } from './movie.service';
-import { ISearchResponse } from './service.dto';
+import { ISearchQuery, ISearchResponse } from './service.dto';
 import { StoryService } from './storie.service';
 
 export type SearchType = 'articles' | 'movies' | 'stories' | 'books'
@@ -24,7 +24,7 @@ export class AppService {
    * Do a global search for articles, books, movies and stories
    * @param query 
    */
-  async search(query: string): Promise<ISearchResponse>{
+  async search(query: ISearchQuery): Promise<ISearchResponse>{
 
     try {
       /** We can do promise.all if we want to request all entities */

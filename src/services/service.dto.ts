@@ -122,3 +122,8 @@ export interface ISearchResponse {
   movies: IMovie[];
   stories: IStorie[];
 }
+
+export interface ISearchQuery {
+  key: string;
+  value: string
+}
